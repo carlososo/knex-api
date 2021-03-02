@@ -13,6 +13,7 @@ router.delete('/homes/:idHome', homeController.dilitOneHome)
 
 
 router.post('/user', userController.createUser);
+router.post('/user/login', userController.login);
 router.get('/users', userController.findAll);
 router.get('/user/:idUser',userController.findOne)
 router.patch('/user/:idUser', userController.updateOneUser)

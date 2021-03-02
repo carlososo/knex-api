@@ -6,7 +6,7 @@ module.exports =(password)=>{
             if(err)reject(err);
             bcrypt.hash(password, salt, function(err, hash){
                 if(err) reject(err);
-                resolve(hash);
+                res(hash);
             })
 
         })

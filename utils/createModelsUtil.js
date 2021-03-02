@@ -1,3 +1,5 @@
+const  knex = require("../models/Home");
+
 class createModelKnex{
     constructor(knex, table, returningData, table_id){
         this.knex =knex;
@@ -16,6 +18,9 @@ class createModelKnex{
         return this.knex.select(this.returningData).from(this.table)
     }
     findOne = (id)=>{
+        return this.knex.select(this.returningData).from(this.table).where({[this.table_id]: id})
+    }
+    find=(query)=>{
         return this.knex.select(this.returningData).from(this.table).where({[this.table_id]: id})
     }
     
