@@ -8,6 +8,6 @@ app.use(express.json());
 
 app.use('/api/v1',myRoutes);
 
-app.listen(3001,()=>{
+app.listen(3000,()=>{
     console.log("Server Online ")
 })
