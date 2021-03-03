@@ -21,7 +21,7 @@ class createModelKnex{
         return this.knex.select(this.returningData).from(this.table).where({[this.table_id]: id})
     }
     find=(query)=>{
-        return this.knex.select(this.returningData).from(this.table).where({[this.table_id]: id})
+        return this.knex.select(this.returningData).from(this.table).where(query)
     }
     
     update =(id, bodyToUpdate)=>{
