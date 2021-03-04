@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const myRoutes = require('./routes/myRoutes')
 
@@ -8,6 +9,6 @@ app.use(express.json());
 
 app.use('/api/v1',myRoutes);
 
-app.listen(3000,()=>{
-    console.log("Server Online ")
+app.listen(process.env.PORT,()=>{
+    console.log("Server Online ", process.env.PORT)
 })

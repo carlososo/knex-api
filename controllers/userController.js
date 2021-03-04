@@ -31,8 +31,11 @@ const findOne =(req, res)=>{
         res.status(400).send(err)
     })
 }
-const updateOneUser =(req, res)=>{
+const updateOneUser =async(req, res)=>{
+    if (req.body.password){
 
+        req.body.password = await hashPassword(req.body.password)
+    }
     User.update(req.params.idUser, req.body).then(result=>{
         res.status(200).send(result)
     }).catch(err=>{
@@ -55,7 +58,6 @@ const dilitOneUser =(req,res)=>{
 }
 const login = async (req,res)=>{
     const {user} = await authenticate(req.body).catch((err)=>res.status(400).send(err))
-    console.log(user);
     const token = generateJWT(user);
     return res.status(200).send({token});
 }
