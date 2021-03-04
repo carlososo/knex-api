@@ -7,7 +7,11 @@ module.exports =({email,password})=>{
         .then((result)=>{
             const [user] =result;
             bcrypt.compare(password, user.password,function(err, same){
-                same ? resolve({same,user}): rej(new Error(err))
+               if(same){
+                resolve({same, user})
+               }else{
+                reject(new Error('El Password es incorrecto'))
+               }
             })
         }).catch((error)=>{
             rej(error)

@@ -57,9 +57,13 @@ const dilitOneUser =(req,res)=>{
     })
 }
 const login = async (req,res)=>{
-    const {user} = await authenticate(req.body).catch((err)=>res.status(400).send(err))
-    const token = generateJWT(user);
-    return res.status(200).send({token});
+    try{
+        const {user} = await authenticate(req.body).catch((err)=>res.status(400).send(err))
+        const token = generateJWT(user);
+        return res.status(200).send({token});
+    }catch(error){
+         return res.status(400).send({msg:"el usuario no existe"})
+    }
 }
 
 module.exports={
